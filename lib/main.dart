@@ -14,6 +14,7 @@ class MainApp extends StatelessWidget {
         drawer: Drawer(),
         appBar: AppBar(
           title: Text('Testing'),
+          backgroundColor: Colors.deepPurple,
         ),
         body: const Center(
           child: Text('Hello World!'),
