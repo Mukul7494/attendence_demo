@@ -1,8 +1,7 @@
 import 'package:attendence_system/auth/firebase/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../widget/password_field.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -67,13 +66,57 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       },
                     ),
 
-                    PassField(
-                        isObscure: isObscure, passController: passController),
-
+                    TextFormField(
+                      decoration: InputDecoration(
+                          suffix: IconButton(
+                              onPressed: () => setState(() {
+                                    isObscure = !isObscure;
+                                  }),
+                              icon: isObscure
+                                  ? const Icon(Icons.remove_red_eye_outlined)
+                                  : const Icon(Icons.remove_red_eye)),
+                          hintText: "Enter your Password",
+                          prefixIcon: const Icon(Icons.password)),
+                      controller: passController,
+                      obscureText: isObscure,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter your Password";
+                        }
+                        if (value.length < 8) {
+                          return "Password must be at least 8 characters";
+                        }
+                        return null;
+                      },
+                    ),
                     signInOrNot
-                        ? PassField(
-                            isObscure: isObscure,
-                            passController: confirmPassController)
+                        ? TextFormField(
+                            decoration: InputDecoration(
+                                suffix: IconButton(
+                                    onPressed: () => setState(() {
+                                          isObscure = !isObscure;
+                                        }),
+                                    icon: isObscure
+                                        ? const Icon(
+                                            Icons.remove_red_eye_outlined)
+                                        : const Icon(Icons.remove_red_eye)),
+                                hintText: "Confirm your Password",
+                                prefixIcon: const Icon(Icons.password)),
+                            controller: confirmPassController,
+                            obscureText: isObscure,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Please enter your Password";
+                              }
+                              if (value.length < 8) {
+                                return "Password must be at least 8 characters";
+                              }
+                              if (value != passController.text) {
+                                return "Password does not match";
+                              }
+                              return null;
+                            },
+                          )
                         : Container(),
 
                     const SizedBox(height: 10),
@@ -86,13 +129,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               margin: const EdgeInsets.symmetric(horizontal: 50),
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       //singINOrNot is used here to change the methods to sign in and sing up
 
                       signInOrNot
                           ?
-                          //if signUpOrNot true then it will use sinup method
+                          //if signInOrNot true then it will use sinup method
 
                           _auth.signUpWithEmail(
                               email: emailController.text,
@@ -102,7 +145,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               password: passController.text);
                     }
                   },
-                  child: const Text("Login")),
+                  child: signInOrNot
+                      ? const Text("Sign Up")
+                      : const Text("Sign In")),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -126,7 +171,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           : const Text("Create Account"))
                 ],
               ),
-            )
+            ),
+            TextButton(
+                onPressed: () => context.push('/phoneloginPage'),
+                child: const Text("Login with Phone"))
           ],
         ));
   }

@@ -1,7 +1,10 @@
+import 'package:attendence_system/auth/firebase/auth_services.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final FirebaseAuthServices _auth = FirebaseAuthServices();
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +12,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Page'),
       ),
-      body: const Center(
-        child: Text("Home page ha Bhai dekh lo"),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(
+            child: Text("Home page ha Bhai dekh lo"),
+          ),
+          TextButton(
+              onPressed: () => _auth.signOut(context), child: (const Text("Logout"))),
+        ],
       ),
       //TODO: MAKE IT SEPERATE WIDGET
       endDrawer: SafeArea(
@@ -18,8 +28,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               ListTile(
-                leading: Icon(Icons.arrow_back),
-                title: Text("Back"),
+                leading: const Icon(Icons.arrow_back),
+                title: const Text("Back"),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -28,41 +38,41 @@ class HomePage extends StatelessWidget {
                 child: ListView(
                   children: [
                     ListTile(
-                      leading: Icon(Icons.apartment),
-                      title: Text("Book to Stay"),
+                      leading: const Icon(Icons.apartment),
+                      title: const Text("Book to Stay"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.airplanemode_active),
-                      title: Text("Book a Flight"),
+                      leading: const Icon(Icons.airplanemode_active),
+                      title: const Text("Book a Flight"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.map),
-                      title: Text("Book an Activity"),
+                      leading: const Icon(Icons.map),
+                      title: const Text("Book an Activity"),
                       onTap: () {},
                     ),
-                    Divider(color: Colors.black),
-                    ListTile(
+                    const Divider(color: Colors.black),
+                    const ListTile(
                       title: Text("My profile"),
                       textColor: Colors.grey,
                     ),
                     ListTile(
-                      leading: Icon(Icons.home),
-                      title: Text("Home"),
+                      leading: const Icon(Icons.home),
+                      title: const Text("Home"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.luggage),
-                      title: Text("My Trip"),
+                      leading: const Icon(Icons.luggage),
+                      title: const Text("My Trip"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.thumb_up),
-                      title: Text("Vote"),
+                      leading: const Icon(Icons.thumb_up),
+                      title: const Text("Vote"),
                       onTap: () {},
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 3,
                     ),
                     Padding(
@@ -75,19 +85,19 @@ class HomePage extends StatelessWidget {
                               width: 125,
                               height: 30,
                               alignment: Alignment.center,
-                              child: Text(
-                                'Activate NFT',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 17),
-                              ),
                               decoration: BoxDecoration(
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: const Text(
+                                'Activate NFT',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 17),
                               )),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -100,106 +110,106 @@ class HomePage extends StatelessWidget {
                               width: 125,
                               height: 30,
                               alignment: Alignment.center,
-                              child: Text(
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 16, 23, 103),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: const Text(
                                 'Explore NFT',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 17),
-                              ),
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 16, 23, 103),
-                                borderRadius: BorderRadius.circular(5),
                               )),
                         ),
                       ),
                     ),
                     ListTile(
-                      leading: Icon(Icons.person),
-                      title: Text("Login"),
+                      leading: const Icon(Icons.person),
+                      title: const Text("Login"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person_add_alt_1_outlined,
                         color: Colors.blue,
                       ),
-                      title: Text("Sign Up Now",
+                      title: const Text("Sign Up Now",
                           style: TextStyle(color: Colors.blue)),
                       onTap: () {},
                     ),
-                    Divider(color: Colors.black),
-                    ListTile(
+                    const Divider(color: Colors.black),
+                    const ListTile(
                       title: Text("Settings"),
                       textColor: Colors.grey,
                     ),
                     ListTile(
-                      leading: Icon(Icons.abc_outlined),
-                      title: Text("Languages"),
+                      leading: const Icon(Icons.abc_outlined),
+                      title: const Text("Languages"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.price_check),
-                      title: Text("Popular Currencies"),
+                      leading: const Icon(Icons.price_check),
+                      title: const Text("Popular Currencies"),
                       onTap: () {},
                     ),
-                    Divider(color: Colors.black),
+                    const Divider(color: Colors.black),
                     ListTile(
-                      leading: Icon(Icons.chat),
-                      title: Text("About Us"),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.post_add),
-                      title: Text("Invite Program"),
+                      leading: const Icon(Icons.chat),
+                      title: const Text("About Us"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.lightbulb_outline),
-                      title: Text("Smart Program"),
+                      leading: const Icon(Icons.post_add),
+                      title: const Text("Invite Program"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.check_circle_outline),
-                      title: Text("Best Price Gurantee"),
+                      leading: const Icon(Icons.lightbulb_outline),
+                      title: const Text("Smart Program"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.shield_moon_outlined),
-                      title: Text("TravelSmart Protection"),
+                      leading: const Icon(Icons.check_circle_outline),
+                      title: const Text("Best Price Gurantee"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.card_giftcard),
-                      title: Text("Travel gift Cards"),
+                      leading: const Icon(Icons.shield_moon_outlined),
+                      title: const Text("TravelSmart Protection"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.card_membership_outlined),
-                      title: Text("Payment Options"),
+                      leading: const Icon(Icons.card_giftcard),
+                      title: const Text("Travel gift Cards"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.shield_outlined),
-                      title: Text("Privacy Policy"),
+                      leading: const Icon(Icons.card_membership_outlined),
+                      title: const Text("Payment Options"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.cookie_outlined),
-                      title: Text("Cookie policy"),
+                      leading: const Icon(Icons.shield_outlined),
+                      title: const Text("Privacy Policy"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.call),
-                      title: Text("Contact"),
+                      leading: const Icon(Icons.cookie_outlined),
+                      title: const Text("Cookie policy"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.pageview_outlined),
-                      title: Text(" Terms And Conditions"),
+                      leading: const Icon(Icons.call),
+                      title: const Text("Contact"),
                       onTap: () {},
                     ),
                     ListTile(
-                      leading: Icon(Icons.question_mark_rounded),
-                      title: Text("Help"),
+                      leading: const Icon(Icons.pageview_outlined),
+                      title: const Text(" Terms And Conditions"),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.question_mark_rounded),
+                      title: const Text("Help"),
                       onTap: () {},
                     ),
                   ],

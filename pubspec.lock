@@ -208,6 +208,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: "direct main"
+    description:
+      name: fluttertoast
+      sha256: "2f9c4d3f4836421f7067a28f8939814597b27614e021da9d63e5d3fb6e212d25"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.2.1"
   go_router:
     dependency: "direct main"
     description:
@@ -320,6 +328,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  sandbox_logger:
+    dependency: "direct main"
+    description:
+      name: sandbox_logger
+      sha256: e3792e0d4cfb1da8bcce6e02aa3aa60e4b0b4194b623c9a94b554d02f09a8905
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
